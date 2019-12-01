@@ -6,7 +6,7 @@ function Dropdown (props) {
   const { items, dropdownInf, visibleToggle } = props;
   return (
     <div className={dropdownInf.open ? 'dropdownList open' : 'dropdownList'} >
-      <button type='button' onClick={() => visibleToggle(dropdownInf)}>all</button>
+      <button type='button' onClick={() => visibleToggle(dropdownInf)}>{items[0]}</button>
       <ul>
         { items.map((item) => <li key={item}>{item}</li>) }
       </ul>

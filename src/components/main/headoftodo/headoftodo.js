@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DropDown from '../../helpers/dropdown';
 
 class HeadOfTodo extends Component {
@@ -14,7 +15,7 @@ class HeadOfTodo extends Component {
         name: 'openByPriority'
       }
     }
-    this.visibleChange.bind(this);
+    this.visibleChange = this.visibleChange.bind(this);
   }
 
   visibleChange(item) {
@@ -28,6 +29,7 @@ class HeadOfTodo extends Component {
 
   render() {
     const { openByDone, openByPriority } = this.state;
+    const { handleShowModal } = this.props;
     return (
       <div className='d-flex justify-content-around mt-3'>
         <div>
@@ -48,6 +50,7 @@ class HeadOfTodo extends Component {
           className="btn btn-dark col-2 p-0"
           style={{height: '40px'}}
           type='button'
+          onClick={() => handleShowModal()}
         > 
           Сreate 
         </button>
@@ -55,4 +58,9 @@ class HeadOfTodo extends Component {
     )
   }
 }
+
+HeadOfTodo.propTypes = {
+  handleShowModal: PropTypes.func.isRequired
+}
+
 export default HeadOfTodo;
