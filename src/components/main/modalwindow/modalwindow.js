@@ -48,11 +48,12 @@ class ModalWindow extends Component {
           <label >
             Description:
             <div>
-                <textarea 
-                  placeholder="Description"
-                  className="form-control" />
+              <textarea 
+                placeholder="Description"
+                className="form-control" />
             </div>
           </label>
+          <p>Priority: </p>
           <Dropdown 
             items={['high', 'normal', 'low']}
             dropdownInf={openByPriority} 

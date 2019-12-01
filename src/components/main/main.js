@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeadOfTodo from './headoftodo';
-import ModalWindow from './modalwindow/modalwindow';
+import ModalWindow from './modalwindow';
 
 class Main extends Component{
   constructor(){

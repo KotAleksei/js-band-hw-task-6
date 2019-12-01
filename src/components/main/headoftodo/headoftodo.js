@@ -43,7 +43,7 @@ class HeadOfTodo extends Component {
           dropdownInf={openByDone}
           visibleToggle={this.visibleChange} />
         <DropDown 
-          items={['all','hight','normal', 'low']} 
+          items={['all', 'hight', 'normal', 'low']} 
           dropdownInf={openByPriority} 
           visibleToggle={this.visibleChange} />
         <button
