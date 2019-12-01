@@ -1,0 +1,72 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": ["react", "jsx-a11y"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "no-console": 1,
+    "linebreak-style": ["error", "unix"],
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx"]
+    }],
+    "jsx-a11y/no-onchange": 0,
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true
+    }],
+    "react/destructuring-assignment": [
+      2,
+      "always",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "react/static-property-placement": [1, "static public field"],
+    "react/state-in-constructor": [1, "never"],
+    "react/sort-comp": [
+      2,
+      {
+        "order": [
+          "static-methods",
+          "static-variables",
+          "instance-variables",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass", 
+      "pragma": "React",  
+      "version": "detect", 
+      "flowVersion": "0.53" 
+    },
+    "propWrapperFunctions": [
+        "forbidExtraProps",
+        {"property": "freeze", "object": "Object"},
+        {"property": "myFavoriteWrapper"}
+    ],
+    "linkComponents": [
+      "Hyperlink",
+      {"name": "Link", "linkAttribute": "to"}
+    ]
+  }
+}
