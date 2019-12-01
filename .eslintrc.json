@@ -1,13 +1,16 @@
 {
   "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["react", "jsx-a11y"],
+  "plugins": ["prettier", "react", "jsx-a11y"],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true

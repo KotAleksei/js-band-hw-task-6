@@ -11,6 +11,7 @@ install:
   - npm install
 
 script:
+  - npm run eslint
   - npm run build
 
 deploy:
