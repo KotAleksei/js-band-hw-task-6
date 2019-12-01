@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 
 function App() {
+  new Object({hi: 'Hello'})
   return (
     <div>
-      Init1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+      Init11111111111111111111
+
     </div>
   );
 }
