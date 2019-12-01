@@ -23,7 +23,6 @@
     "jest": true
   },
   "rules": {
-    "no-new": 2,
     "no-console": 1,
     "linebreak-style": ["error", "unix"],
     "react/jsx-filename-extension": [1, {
@@ -33,28 +32,7 @@
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": true
     }],
-    "react/destructuring-assignment": [
-      2,
-      "always",
-      {
-        "ignoreClassFields": true
-      }
-    ],
-    "react/static-property-placement": [1, "static public field"],
-    "react/state-in-constructor": [1, "never"],
-    "react/sort-comp": [
-      2,
-      {
-        "order": [
-          "static-methods",
-          "static-variables",
-          "instance-variables",
-          "lifecycle",
-          "everything-else",
-          "render"
-        ]
-      }
-    ]
+    "react/display-name": 0
   },
   "settings": {
     "react": {

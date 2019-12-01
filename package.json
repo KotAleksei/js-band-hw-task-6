@@ -29,6 +29,7 @@
     ]
   },
   "devDependencies": {
+    "bootstrap": "^4.4.1",
     "eslint": "6.1.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "^6.7.0",
