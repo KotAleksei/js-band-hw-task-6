@@ -1,0 +1,2 @@
+(this["webpackJsonpjs-band-hw-task-6"]=this["webpackJsonpjs-band-hw-task-6"]||[]).push([[0],{3:function(n,t,e){n.exports=e(9)},8:function(n,t,e){},9:function(n,t,e){"use strict";e.r(t);var a=e(0),r=e.n(a),s=e(2),c=e.n(s);e(8);var i=function(){return r.a.createElement("div",null,"Init linter")};c.a.render(r.a.createElement(i,null),document.getElementById("root"))}},[[3,1,2]]]);
+//# sourceMappingURL=main.1411c3c4.chunk.js.map
