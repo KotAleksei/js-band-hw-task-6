@@ -1,0 +1,2 @@
+(this["webpackJsonpjs-band-hw-task-6"]=this["webpackJsonpjs-band-hw-task-6"]||[]).push([[0],{3:function(n,t,e){n.exports=e(9)},8:function(n,t,e){},9:function(n,t,e){"use strict";e.r(t);var a=e(0),r=e.n(a),s=e(2),c=e.n(s);e(8);var o=function(){return r.a.createElement("div",null,"Init")};c.a.render(r.a.createElement(o,null),document.getElementById("root"))}},[[3,1,2]]]);
+//# sourceMappingURL=main.aa22911a.chunk.js.map
