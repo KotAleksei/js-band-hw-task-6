@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import HeadOfTodo from './headoftodo';
 import ModalWindow from './modalwindow';
+import TodoList from './todolist/todolist';
 
 class Main extends Component{
   constructor(){
     super();
     this.state = {
-      showModalWindow: false
+      showModalWindow: false,
+      items: []
     }
     this.handleShowModal = this.handleShowModal.bind(this);
+    this.creatTodo = this.creatTodo.bind(this);
   }
 
   handleShowModal() {
@@ -17,15 +20,30 @@ class Main extends Component{
     }))
   }
 
+  creatTodo(todo) {
+    this.setState((prevState) => ({
+      items: [
+        ...prevState.items,
+        {
+          id: Date.now(),
+          done: false,
+          ...todo
+        },
+      ]
+    }))
+  }
+
   render() {
-    const { showModalWindow } = this.state;
+    const { showModalWindow, items } = this.state;
     return (
       <>
         <HeadOfTodo 
           handleShowModal={this.handleShowModal}/>
         <ModalWindow 
           show={showModalWindow}
-          handleShowModal={this.handleShowModal} />
+          handleShowModal={this.handleShowModal}
+          creatTodo={this.creatTodo} />
+        <TodoList todolist={items} />
       </>
     );
   }
