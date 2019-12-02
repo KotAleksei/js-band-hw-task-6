@@ -4,24 +4,16 @@ import Dropdown from '../../helpers/dropdown';
 import './style.css';
 
 class ModalWindow extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       openByPriority: {
         name: 'openByPriority',
         open: true
       },
-      title: '',
-      description: '',
-      priority: 'high'
     }
 
     this.visibleToggle = this.visibleToggle.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.resetData = this.resetData.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
   }
 
   visibleToggle(item) {
@@ -33,65 +25,36 @@ class ModalWindow extends Component {
     }));
   }
 
-  handleCancel() {
-    const { handleShowModal } = this.props;
-
-    handleShowModal()
-    this.resetData();
-  }
-
-  handleClick(e) {
-    this.setState({
-      priority: e.target.innerText
-    });
-  }
-
-  handleSubmit(event) {
-    const { handleShowModal, creatTodo } = this.props;
-    const { title, description, priority } = this.state;
-    event.preventDefault();
-    creatTodo({ title, description, priority });
-    
-    this.resetData();
-    handleShowModal();
-  }
-
-  resetData() {
-    this.setState({
-      title: '',
-      description: '',
-      priority: 'high'
-    })
-  }
-
-  handleChange(e) {
-    const target = e.target.tagName;
-    const name = target === "INPUT" ? 'title' : 'description';
-    const {value} = e.target;
-
-    this.setState({
-      [name]: value
-    })
-  }
 
   render() {
-    const { openByPriority, title, description, priority } = this.state;
-    const { show } = this.props;
+    const { openByPriority } = this.state;
+    const { 
+      show, 
+      title, 
+      description, 
+      priority,
+      handleChange,
+      handleClick,
+      handleCancel,
+      handleSubmit
+    } = this.props;
     const priorityItems = ['high', 'normal', 'low'];
     return (
       <div className={show ? "modalWindow show" : "modalWindow"}>
-        <form className="createTodoContent" onSubmit={this.handleSubmit}>
-        <label >
-          Title:
-            <input 
-              type="text" 
-              placeholder="Title" 
-              title="please fill this field"
-              className="form-control"
-              value={title}
-              onChange={this.handleChange}
-              required />
-        </label>
+        <form 
+          className="createTodoContent" 
+          onSubmit={handleSubmit}>
+          <label >
+            Title:
+              <input 
+                type="text" 
+                placeholder="Title" 
+                title="please fill this field"
+                className="form-control"
+                value={title}
+                onChange={handleChange}
+                required />
+          </label>
           <label >
             Description:
             <div>
@@ -99,7 +62,7 @@ class ModalWindow extends Component {
                 placeholder="Description"
                 className="form-control"
                 value={description}
-                onChange={this.handleChange} />
+                onChange={handleChange} />
             </div>
           </label>
           <p>Priority: </p>
@@ -107,14 +70,14 @@ class ModalWindow extends Component {
             items={priorityItems}
             dropdownInf={openByPriority} 
             visibleToggle={this.visibleToggle}
-            handleClick={this.handleClick}
+            handleClick={handleClick}
             textValue={priority}
           />
           <div className="btnGroup">
               <button 
                 type='button'
                 className="btn btn-outline-danger"
-                onClick={this.handleCancel}>
+                onClick={handleCancel}>
                   Cancel
               </button>
               <button type="submit" className="btn btn-outline-success">Save</button>
@@ -125,14 +88,16 @@ class ModalWindow extends Component {
   }
 }
 
-ModalWindow.defaultProps = {
-  creatTodo: PropTypes.func
-}
 
 ModalWindow.propTypes = {
-  handleShowModal: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  creatTodo: PropTypes.func
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  priority: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }
 
 export default ModalWindow;

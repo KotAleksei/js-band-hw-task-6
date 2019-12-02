@@ -18,7 +18,7 @@ class TodoItem extends Component {
   }
 
   render() {
-    const { todo } = this.props;
+    const { todo, editTodo, toggleDone, deleteTodo } = this.props;
     const { dropdownOpen } = this.state;
     return (
       <div className={`card text-white ${todo.done ? 'bg-success' : 'bg-secondary'}  mb-3 todoItem show`}
@@ -37,9 +37,23 @@ class TodoItem extends Component {
           <div className={dropdownOpen ? "dropdownEditTodo open" : "dropdownEditTodo"}>
             <button type="button" onClick={this.handleOpen}>...</button>
             <ul>
-              <li>done</li>
-              <li>edit</li>
-              <li>delete</li>
+              <li onClick={() => {
+                toggleDone(todo);
+                this.handleOpen();
+              }}>
+                done
+              </li>
+              <li onClick={() => { 
+                    editTodo(todo);
+                    this.handleOpen();
+                }}>
+                  edit
+              </li>
+              <li onClick={() => {
+                deleteTodo(todo);
+              }}>
+                delete
+              </li>
             </ul>
           </div>
         </div>
@@ -55,7 +69,10 @@ TodoItem.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     priority: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  editTodo: PropTypes.func.isRequired,
+  toggleDone: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 };
 
 export default TodoItem;
