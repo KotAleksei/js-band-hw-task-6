@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/js-band-hw-task-6/static/css/main.bcac620f.chunk.css",
+    "main.css": "/js-band-hw-task-6/static/css/main.e0486ae0.chunk.css",
     "main.js": "/js-band-hw-task-6/static/js/main.9ca78984.chunk.js",
     "main.js.map": "/js-band-hw-task-6/static/js/main.9ca78984.chunk.js.map",
     "runtime-main.js": "/js-band-hw-task-6/static/js/runtime-main.de2a5d39.js",
@@ -9,16 +9,16 @@
     "static/js/2.c8e094d6.chunk.js": "/js-band-hw-task-6/static/js/2.c8e094d6.chunk.js",
     "static/js/2.c8e094d6.chunk.js.map": "/js-band-hw-task-6/static/js/2.c8e094d6.chunk.js.map",
     "index.html": "/js-band-hw-task-6/index.html",
-    "precache-manifest.02748b628077095a3bee053b757f5db0.js": "/js-band-hw-task-6/precache-manifest.02748b628077095a3bee053b757f5db0.js",
+    "precache-manifest.1d0aa2d8b4c5903b6c7febd1f91da5ff.js": "/js-band-hw-task-6/precache-manifest.1d0aa2d8b4c5903b6c7febd1f91da5ff.js",
     "service-worker.js": "/js-band-hw-task-6/service-worker.js",
     "static/css/2.64a99b10.chunk.css.map": "/js-band-hw-task-6/static/css/2.64a99b10.chunk.css.map",
-    "static/css/main.bcac620f.chunk.css.map": "/js-band-hw-task-6/static/css/main.bcac620f.chunk.css.map"
+    "static/css/main.e0486ae0.chunk.css.map": "/js-band-hw-task-6/static/css/main.e0486ae0.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.de2a5d39.js",
     "static/css/2.64a99b10.chunk.css",
     "static/js/2.c8e094d6.chunk.js",
-    "static/css/main.bcac620f.chunk.css",
+    "static/css/main.e0486ae0.chunk.css",
     "static/js/main.9ca78984.chunk.js"
   ]
 }
