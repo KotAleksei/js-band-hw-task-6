@@ -1,10 +1,14 @@
+:root {
+  --footer: 4.55rem;
+  --header: 4.55rem;
+}
 .todoList {
-  margin-top: 115px;
-  min-height: calc(54vh - 20px);
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+  min-height: calc(100vh - 6rem - 3rem - var(--footer) - var(--header));
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 50px;
   margin-left: 40px;
 }
 
