@@ -1,6 +1,6 @@
 .todoList {
   margin-top: 115px;
-  min-height: calc(61vh - 20px);
+  min-height: calc(54vh - 20px);
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -10,7 +10,6 @@
 
 .todoItem {
   display: none;
-
 }
 .todoItem.show {
   display: block;
