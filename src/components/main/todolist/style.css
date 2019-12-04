@@ -78,3 +78,20 @@
   cursor: pointer;
   background-color: lightgreen;
 }
+
+.bg-success {
+  animation: doneAnimation 1.5s ease;
+}
+
+.bg-secondary {
+  animation: doneAnimation 1.5s ease;
+}
+
+@keyframes doneAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

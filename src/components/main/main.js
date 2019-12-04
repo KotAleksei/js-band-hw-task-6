@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import HeadOfTodo from './headoftodo';
 import ModalWindow from './modalwindow';
 import TodoList from './todolist/todolist';
-
-let sortBy = {
-  searchText: '',
-  priority: 'all',
-  completed: 'all',
-};
+import sorted from '../helpers/sorted';
 
 class Main extends Component {
   constructor() {
@@ -17,6 +12,11 @@ class Main extends Component {
       items: [],
       filterItems: [],
       editItem: undefined,
+      sortBy: {
+        searchText: '',
+        priority: 'all',
+        completed: 'all',
+      },
     };
 
     this.handleShowModal = this.handleShowModal.bind(this);
@@ -35,6 +35,7 @@ class Main extends Component {
   }
 
   creatTodo(todo) {
+    const { sortBy } = this.state;
     this.setState(prevState => {
       return {
         items: [
@@ -53,6 +54,7 @@ class Main extends Component {
   }
 
   editTodo(todo) {
+    const { sortBy } = this.state;
     const { id, title, description, priority } = todo;
     this.setState(prevState => {
       return {
@@ -74,6 +76,7 @@ class Main extends Component {
   }
 
   toggleDone(todo) {
+    const { sortBy } = this.state;
     this.setState(prevState => ({
       items: prevState.items.map(todoItem => {
         const newItem = { ...todoItem };
@@ -88,7 +91,7 @@ class Main extends Component {
   }
 
   deleteTodo(todo) {
-    const { items } = this.state;
+    const { items, sortBy } = this.state;
     this.setState({
       items: items.filter(todoItem => todoItem.id !== todo.id),
     });
@@ -97,52 +100,22 @@ class Main extends Component {
   }
 
   sortedItems(filter) {
-    setTimeout(() => {
-      const { items } = this.state;
-      let copyTodos = [...items];
-      sortBy = { ...filter };
+    this.setState(prevState => {
+      const filterItems = sorted(filter, prevState.items);
 
-      switch (filter.completed) {
-        case 'done': {
-          copyTodos = copyTodos.filter(todoItem => todoItem.done);
-          break;
-        }
-        case 'open': {
-          copyTodos = copyTodos.filter(todoItem => !todoItem.done);
-          break;
-        }
-        default:
-          break;
+      // for corectly render items with sorting where done Todos in the end
+      // shoul add next condition
+      if (prevState.items.length === filterItems.length) {
+        return {
+          sortBy: { ...filter },
+          filterItems,
+          items: filterItems,
+        };
       }
-
-      switch (filter.priority) {
-        case 'high': {
-          copyTodos = copyTodos.filter(
-            todoItem => todoItem.priority === 'high',
-          );
-          break;
-        }
-        case 'normal': {
-          copyTodos = copyTodos.filter(
-            todoItem => todoItem.priority === 'normal',
-          );
-          break;
-        }
-        case 'low': {
-          copyTodos = copyTodos.filter(todoItem => todoItem.priority === 'low');
-          break;
-        }
-        default:
-          break;
-      }
-      if (filter.searchText) {
-        copyTodos = copyTodos.filter(todoItem =>
-          todoItem.title.includes(filter.searchText),
-        );
-      }
-
-      copyTodos.sort((x, y) => x.done - y.done);
-      this.setState({ filterItems: copyTodos });
+      return {
+        sortBy: { ...filter },
+        filterItems,
+      };
     });
   }
 

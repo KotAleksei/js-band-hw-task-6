@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DropDown from '../../helpers/dropdown';
-import sorted from '../sorted/sorted';
 
 class HeadOfTodo extends Component {
   constructor() {
@@ -15,9 +14,11 @@ class HeadOfTodo extends Component {
         open: true,
         name: 'openByPriority',
       },
-      priority: 'all',
-      completed: 'all',
-      searchText: '',
+      sortBy: {
+        priority: 'all',
+        completed: 'all',
+        searchText: '',
+      },
     };
     this.visibleChange = this.visibleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -35,27 +36,44 @@ class HeadOfTodo extends Component {
 
   handleClick(e, name) {
     const { handleSorted } = this.props;
+    const { sortBy } = this.state;
     const value = e.target.innerText;
-    const sortBy = sorted({ [name]: value });
-    this.setState({
+    this.setState(prevState => ({
+      sortBy: {
+        ...prevState.sortBy,
+        [name]: value,
+      },
+    }));
+
+    handleSorted({
+      ...sortBy,
       [name]: value,
     });
-    handleSorted(sortBy);
   }
 
   searchByTitle(e) {
     const { handleSorted } = this.props;
+    const { sortBy } = this.state;
     const { value } = e.target;
-    const sortBy = sorted({ searchText: value });
-    this.setState({
+    this.setState(prevState => ({
+      sortBy: {
+        ...prevState.sortBy,
+        searchText: value,
+      },
+    }));
+
+    handleSorted({
+      ...sortBy,
       searchText: value,
     });
-
-    handleSorted(sortBy);
   }
 
   render() {
-    const { openByDone, openByPriority, priority, completed } = this.state;
+    const {
+      openByDone,
+      openByPriority,
+      sortBy: { priority, completed },
+    } = this.state;
     const { handleShowModal } = this.props;
     const priorityItems = ['all', 'high', 'normal', 'low'];
     const doneItems = ['all', 'open', 'done'];
